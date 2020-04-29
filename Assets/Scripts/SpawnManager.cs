@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] GameObject obstacle;
+    [SerializeField] int obstacleCount = 5;
+
     void Start()
+    {
+        SpawnObstacle(obstacleCount);
+    }
+    
+    void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void SpawnObstacle(int count)
     {
-        
+        for(int i=0; i<count; i++)
+        {
+            Instantiate(obstacle);
+        }
     }
 }
