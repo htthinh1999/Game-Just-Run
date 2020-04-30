@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Sound
+{
+    public string name;
+    public AudioClip clip;
+}
+
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] Sound[] sound;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
