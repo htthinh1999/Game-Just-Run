@@ -6,26 +6,40 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] float distance = 1f;
+
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
     }
+
     void Move()
     {
-        PCInput();
+        PCInput2();
     }
+
     void PCInput2()
     {
-        int y = (Input.GetAxis("Vertical")  > 0 )?1: (Input.GetAxis("Vertical") < 0)?-1:0;
-        transform.position = new Vector2(transform.position.x, y);
+        float direction = Input.GetAxis("Vertical");    //return [-1; 1] when push W or S or up arrow or down arrow
+        if (Input.GetButtonDown("Vertical"))            //return true when push W or S or up arrow or down arrow
+        {
+            if (direction < 0 && transform.position.y > -distance)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y - distance);
+            }
+            else if (direction > 0 && transform.position.y < distance)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + distance);
+            }
+        }
     }
+
     void PCInput()
     {
         if (transform.position.y == 0)
