@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] float Speed = 0.8f;
+    [SerializeField] float speed = 0.8f;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,6 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(transform.position.x - Speed * Time.deltaTime, transform.position.y);
+        transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
     }
 }

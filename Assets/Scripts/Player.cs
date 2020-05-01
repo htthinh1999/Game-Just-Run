@@ -6,36 +6,37 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float distance = 1f;
-
+    public float Distance { get; private set; } = 1f;
+    float ySpawnPos;
 
     void Start()
     {
-        
+        ySpawnPos = transform.position.y;
     }
 
     void Update()
     {
+ 
         Move();
     }
 
     void Move()
-    {
+    {       
         PCInput2();
     }
 
     void PCInput2()
     {
-        float direction = Input.GetAxis("Vertical");    //return [-1; 1] when push W or S or up arrow or down arrow
+        float direction = Input.GetAxis("Vertical");  //return [-1; 1] when push W or S or up arrow or down arrow
         if (Input.GetButtonDown("Vertical"))            //return true when push W or S or up arrow or down arrow
         {
-            if (direction < 0 && transform.position.y > -distance)
+            if (direction < 0 && transform.position.y >  ( ySpawnPos - Distance))
             {
-                transform.position = new Vector2(transform.position.x, transform.position.y - distance);
+                transform.position = new Vector2(transform.position.x, transform.position.y - Distance);
             }
-            else if (direction > 0 && transform.position.y < distance)
+            else if (direction > 0 && transform.position.y <  (ySpawnPos + Distance))
             {
-                transform.position = new Vector2(transform.position.x, transform.position.y + distance);
+                transform.position = new Vector2(transform.position.x, transform.position.y + Distance);
             }
         }
     }
