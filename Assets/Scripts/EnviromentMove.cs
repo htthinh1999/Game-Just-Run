@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnviromentMove : MonoBehaviour
 {
-    public float Speed = 4f; //Ground: 4; Clouds: 0.1f
+    public float Speed = 4f; //Ground: 4; Clouds: 0.1f; Mountain Far: 0.2f; Mountain Near: 0.4f
 
-    [SerializeField] float leftRange = -13f; //Ground: -38; Clouds: -44
+    [SerializeField] float leftRange = -13f; //Ground: -38; Clouds: -44; Mountain: -43.3f
 
     Vector2 originalPosistion;
 
