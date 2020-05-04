@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
     public float Distance { get; private set; } = 1f;
     float ySpawnPos;
     int check = 0;
+    bool dead = false;
 
     void Start()
     {
@@ -18,8 +20,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
- 
-        Move();
+        if(!dead)
+        {
+            Move();
+        }
     }
 
     void Move()
@@ -78,10 +82,11 @@ public class Player : MonoBehaviour
         else
             return false;
     }
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log("Va cham");
         check = 1;
-       // Time.timeScale = 0;
+        dead = true;
+        GameManager.Instance.GameOver();
     }
 }
