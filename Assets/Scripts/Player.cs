@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //Obstacle obstacle;
     public float Distance { get; private set; } = 1f;
     float ySpawnPos;
+    int check = 0;
 
     void Start()
     {
@@ -68,5 +70,18 @@ public class Player : MonoBehaviour
                 transform.position = new Vector2(transform.position.x, 0);
             }
         }
+    }
+    public bool CheckDeath()
+    {
+        if (check == 1)
+            return true;
+        else
+            return false;
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("Va cham");
+        check = 1;
+       // Time.timeScale = 0;
     }
 }

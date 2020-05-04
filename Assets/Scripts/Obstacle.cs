@@ -17,4 +17,8 @@ public class Obstacle : MonoBehaviour
     {
         transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
     }
+    public void SetSpeed(float sp)
+    {
+        speed = sp;
+    }
 }
