@@ -25,13 +25,8 @@ public class SpawnManager : MonoBehaviour
         if(count%120==0)
         {
             GameObject ob = Instantiate(obstacle, transform);
-            ob.transform.position = new Vector2(9, randomSpawnPos[RandomIndex()]);
+            ob.transform.position = new Vector2(9, randomSpawnPos[Random.Range(0, randomSpawnPos.Length)]);
         }
     }
 
-    int RandomIndex()
-    {
-        float randomNumber = Random.Range(0f, 1f);
-        return (randomNumber < 0.33f) ? 0 : (randomNumber < 0.66f) ? 1 : 2;
-    }
 }
