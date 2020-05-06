@@ -87,6 +87,6 @@ public class Player : MonoBehaviour
         Debug.Log("Va cham");
         check = 1;
         dead = true;
-        GameManager.Instance.GameOver();
+        GameManager.Instance.Stop();
     }
 }

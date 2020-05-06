@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public bool GameOver { get; private set; } = false;
     public float Speed = 4f;
 
     void Awake()
@@ -22,8 +23,9 @@ public class GameManager : MonoBehaviour
            
     }
 
-    public void GameOver()
+    public void Stop()
     {
         Speed = 0;
+        GameOver = true;
     }
 }

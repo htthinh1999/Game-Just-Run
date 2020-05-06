@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         count++;
-        if(count%120==0)
+        if(count%120==0 && !GameManager.Instance.GameOver)
         {
             GameObject ob = Instantiate(obstacle, transform);
             ob.transform.position = new Vector2(9, randomSpawnPos[Random.Range(0, randomSpawnPos.Length)]);
