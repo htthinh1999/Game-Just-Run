@@ -1,11 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [System.Serializable]
-
 public class Sound
 {
     public string name;
@@ -32,27 +31,24 @@ public class Sound
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] Sound[] sound;
+    [SerializeField] Sound[] fileSounds;
+    Dictionary<string, Sound> sound = new Dictionary<string, Sound>();
+
     private void Start()
     {
-        for(int i=0;i<sound.Length;i++)
+        for (int i = 0; i < fileSounds.Length; i++)
         {
             AudioSource src = gameObject.AddComponent<AudioSource>();
-            sound[i].SetAudioSource(src);
+            fileSounds[i].SetAudioSource(src);
+            sound.Add(fileSounds[i].name, fileSounds[i]);
         }
         
     }
     public void PlaySound(string name)
     {
-        for(int i=0;i<sound.Length;i++)
+        if(sound.ContainsKey(name))
         {
-            if(sound[i].name == name)
-            {
-                sound[i].Play();
-                break;
-            }    
-        }    
-    }    
-
-
+            sound[name].Play();
+        }
+    }
 }

@@ -233,7 +233,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8863e9c0db1baa240965da98de74fa82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: []
+  fileSounds:
+  - name: gameover1
+    clip: {fileID: 8300000, guid: cfb7040755d7a574e99e13e428b37c09, type: 3}
+    playOnAwake: 0
+    loop: 0
+    volume: 1
+    pitch: 1
+  - name: gameover2
+    clip: {fileID: 8300000, guid: 2017748834a567b45b9b197f543f11d7, type: 3}
+    playOnAwake: 0
+    loop: 0
+    volume: 1
+    pitch: 1
 --- !u!4 &1319333743
 Transform:
   m_ObjectHideFlags: 0
