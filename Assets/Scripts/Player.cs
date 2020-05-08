@@ -7,8 +7,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //Obstacle obstacle;
-    public float Distance { get; private set; } = 1f;
+    public float Distance = 1.5f;
     float ySpawnPos;
     int check = 0;
     bool dead = false;

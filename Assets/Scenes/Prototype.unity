@@ -1627,7 +1627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2f399b92cbd3240b7eba11aeb1ac52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 7247881411657904007, guid: 5f85032b18cb0b7459931f607163725a,
+  obstacle: {fileID: 6330068066659808270, guid: 61a3c37e6075d7d499cc99519e1fe0c8,
     type: 3}
   player: {fileID: 1949549474}
 --- !u!4 &653466157
@@ -4124,7 +4124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 4
-  GameOver: 0
 --- !u!4 &1597950020
 Transform:
   m_ObjectHideFlags: 0
@@ -4904,6 +4903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9604f816c56b9a44dbb6b040730bbb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Distance: 1.25
 --- !u!50 &1949549475
 Rigidbody2D:
   serializedVersion: 4
@@ -4938,7 +4938,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
+  m_Offset: {x: -0.4, y: -1.4}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4949,7 +4949,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!95 &1949549477
 Animator:
@@ -5028,7 +5028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949549472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: -5, y: -3, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

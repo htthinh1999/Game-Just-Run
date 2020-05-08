@@ -12,7 +12,6 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        
         transform.position = player.transform.position;
         randomSpawnPos = new float[] { transform.position.y - player.Distance,
                                        transform.position.y,
