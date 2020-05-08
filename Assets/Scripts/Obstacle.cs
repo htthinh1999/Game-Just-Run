@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public float Speed = 2;
-
     void Update()
     {
-        transform.Translate(Vector2.left * Time.deltaTime * Speed);
+        transform.Translate(Vector2.left * Time.deltaTime * GameManager.Instance.Speed);
         if (transform.position.x <= ScreenBounds.Left)
         {
             SpawnManager.Instance.ReturnToPool(gameObject);

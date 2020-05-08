@@ -20,7 +20,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-           
+        if (!GameOver)
+        {
+            Speed += 0.001f;
+        }
     }
 
     public void Stop()

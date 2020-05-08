@@ -35,11 +35,11 @@ public class Player : MonoBehaviour
         float direction = Input.GetAxis("Vertical");  //return [-1; 1] when push W or S or up arrow or down arrow
         if (Input.GetButtonDown("Vertical"))            //return true when push W or S or up arrow or down arrow
         {
-            if (direction < 0 && transform.position.y >  ( ySpawnPos - Distance))
+            if (direction < 0 && transform.position.y > ( ySpawnPos - Distance))
             {
                 transform.position = new Vector2(transform.position.x, transform.position.y - Distance);
             }
-            else if (direction > 0 && transform.position.y <  (ySpawnPos + Distance))
+            else if (direction > 0 && transform.position.y < (ySpawnPos + Distance))
             {
                 transform.position = new Vector2(transform.position.x, transform.position.y + Distance);
             }

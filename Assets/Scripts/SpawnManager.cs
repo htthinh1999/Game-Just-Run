@@ -7,8 +7,8 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;
 
-    [SerializeField] float spawnDistance = 1.25f;
-    [SerializeField] GameObject obstacle;
+    [SerializeField] GameObject[] obstacles;
+    [SerializeField] Player player;
     [SerializeField] int obstacleCount = 50;
     [SerializeField] float spawnDelayMin = 1;
     [SerializeField] float spawnDelayMax = 3;
@@ -19,9 +19,10 @@ public class SpawnManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        ySpawnPos = new float[] {transform.position.y + spawnDistance,
+        transform.position = player.transform.position;
+        ySpawnPos = new float[] {transform.position.y + player.Distance,
                                 transform.position.y,
-                                transform.position.y - spawnDistance};
+                                transform.position.y - player.Distance};
     }
 
     void Start()
@@ -34,7 +35,7 @@ public class SpawnManager : MonoBehaviour
     {
         for(int i=0; i<count; i++)
         {
-            GameObject ob = Instantiate(obstacle, transform);
+            GameObject ob = Instantiate(obstacles[Random.Range(0, obstacles.Length)], transform);
             ob.SetActive(false);
             poolObjects.Add(ob);
         }
