@@ -5,16 +5,15 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float Speed = 2;
 
-    // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(transform.position.x - GameManager.Instance.Speed * Time.deltaTime, transform.position.y);
+        transform.Translate(Vector2.left * Time.deltaTime * Speed);
+        if (transform.position.x <= ScreenBounds.Left)
+        {
+            SpawnManager.Instance.ReturnToPool(gameObject);
+        }
     }
   
 }
