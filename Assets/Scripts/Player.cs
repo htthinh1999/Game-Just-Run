@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     void Move()
     {       
-        PCInput2();
+        PCInput();
     }
 
     void PCInput2()
@@ -47,29 +47,29 @@ public class Player : MonoBehaviour
 
     void PCInput()
     {
-        if (transform.position.y == 0)
+        if (transform.position.y == ySpawnPos)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                transform.position = new Vector2(transform.position.x, 1);
+                transform.position = new Vector2(transform.position.x, transform.position.y + Distance);
             }
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                transform.position = new Vector2(transform.position.x, -1);
+                transform.position = new Vector2(transform.position.x, transform.position.y - Distance);
             }
         }
-        if (transform.position.y == 1)
+        if (transform.position.y == ySpawnPos + Distance)
         {
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                transform.position = new Vector2(transform.position.x, 0);
+                transform.position = new Vector2(transform.position.x, ySpawnPos);
             }
         }
-        if (transform.position.y == -1)
+        if (transform.position.y == ySpawnPos - Distance)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                transform.position = new Vector2(transform.position.x, 0);
+                transform.position = new Vector2(transform.position.x, ySpawnPos);
             }
         }
     }
