@@ -41,14 +41,14 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void SpawnObstacleToScene()
+    public void SpawnObstacleToScene()
     {
         StartCoroutine(_SpawnObstacleToScene());
     }
 
     IEnumerator _SpawnObstacleToScene()
     {
-        while (true)
+        while (!GameManager.Instance.GameOver)
         {
             yield return new WaitForSeconds(Random.Range(spawnDelayMin, spawnDelayMax));
             if (poolObjects.Count > 1)
