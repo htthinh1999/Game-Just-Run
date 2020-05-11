@@ -26,26 +26,22 @@ public class Player : MonoBehaviour
 
     void Move()
     {       
-        PCInput();
+        PCInputTest();
     }
 
-    void PCInput2()
+    void PCInputTest()
     {
-        float direction = Input.GetAxis("Vertical");  //return [-1; 1] when push W or S or up arrow or down arrow
-        if (Input.GetButtonDown("Vertical"))            //return true when push W or S or up arrow or down arrow
+        if(Input.GetButtonDown("UpArrow"))
         {
-            if (direction < 0 && transform.position.y > ( ySpawnPos - Distance))
-            {
-                transform.position = new Vector2(transform.position.x, transform.position.y - Distance);
-            }
-            else if (direction > 0 && transform.position.y < (ySpawnPos + Distance))
-            {
-                transform.position = new Vector2(transform.position.x, transform.position.y + Distance);
-            }
+            transform.position = new Vector2(transform.position.x, Mathf.Min(transform.position.y + Distance,ySpawnPos + Distance));
+        }
+        if (Input.GetButtonDown("DownArrow"))
+        {
+            transform.position = new Vector2(transform.position.x, Mathf.Max(transform.position.y - Distance, ySpawnPos - Distance));
         }
     }
 
-    void PCInput()
+    /*void PCInput()
     {
         if (transform.position.y == ySpawnPos)
         {
@@ -72,7 +68,20 @@ public class Player : MonoBehaviour
                 transform.position = new Vector2(transform.position.x, ySpawnPos);
             }
         }
+    }*/
+    
+    public void MobileInput(string direction)
+    {
+        if (direction.Equals("UpArrow"))
+        {
+            transform.position = new Vector2(transform.position.x, Mathf.Min(transform.position.y + Distance, ySpawnPos + Distance));
+        }
+        if (direction.Equals("DownArrow"))
+        {
+            transform.position = new Vector2(transform.position.x, Mathf.Max(transform.position.y - Distance, ySpawnPos - Distance));
+        }
     }
+
     public bool CheckDeath()
     {
         if (check == 1)
