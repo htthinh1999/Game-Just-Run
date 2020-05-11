@@ -53,11 +53,11 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(spawnDelayMin, spawnDelayMax));
             if (poolObjects.Count > 1)
             {
-                for(int i=0; i<Random.Range(1, 3); i++) // Spawn 1 or 2 obstacle
+                bool[] ySpawned = new bool[3];
+                for (int i=0; i<Random.Range(1, 3); i++) // Spawn 1 or 2 obstacle
                 {
-                    bool[] ySpawned = new bool[3];
                     GameObject ob = poolObjects[0];
-
+                    
                     // Spawn random position
                     int index;
                     do
