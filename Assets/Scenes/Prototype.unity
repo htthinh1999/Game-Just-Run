@@ -5509,7 +5509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1576708505}
   m_Layer: 5
-  m_Name: Input
+  m_Name: Mobile Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7061,6 +7061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Distance: 1.25
+  mobileInput: {fileID: 1576708504}
 --- !u!50 &1949549475
 Rigidbody2D:
   serializedVersion: 4

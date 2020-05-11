@@ -7,9 +7,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float Distance = 1.5f;
+    [SerializeField] GameObject mobileInput;
     float ySpawnPos;
     int check = 0;
     bool dead = false;
+
+    void Awake()
+    {
+        #if UNITY_EDITOR || UNITY_STANDALONE_WIN
+            mobileInput.SetActive(false);
+        #endif
+    }
 
     void Start()
     {
