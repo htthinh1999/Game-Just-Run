@@ -3,25 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     public bool GameOver { get; private set; } = false;
-    public float Speed = 10f;
+    public float Speed = 4f;
 
     bool paused = false;
-    int highScore = 0, score = 0;
+    int score = 0;
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI[] scoreTexts;
-    [SerializeField] TextMeshProUGUI highScoreText;
-    [SerializeField] Animator plus1000Ani;
     [SerializeField] GameObject gameOverScreen;
-    [SerializeField] Button pauseButton;
-    [SerializeField] Button resumeButton;
 
     void Awake()
     {
@@ -30,33 +25,15 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        if(SceneManager.GetActiveScene().name != "UIScene")
-        {
-            highScore = PlayerPrefs.GetInt("HighScore");
-            highScoreText.text = highScore.ToString();
-        }
+        
     }
 
     void Update()
     {
-        if(SceneManager.GetActiveScene().name != "UIScene")
+        if (!GameOver && !paused && SceneManager.GetActiveScene().name != "UIScene")
         {
-            if (!GameOver && !paused)
-            {
-                Speed += 0.001f;
-                SetScore(score++);
-            }
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (paused)
-                {
-                    resumeButton.onClick.Invoke();
-                }
-                else
-                {
-                    pauseButton.onClick.Invoke();
-                }
-            }
+            Speed += 0.001f;
+            SetScore(score++);
         }
     }
 
@@ -66,13 +43,6 @@ public class GameManager : MonoBehaviour
         {
             scoreTexts[i].text = score.ToString();
         }
-        highScoreText.text = Mathf.Max(score, highScore).ToString();
-    }
-
-    public void AddScore(int score)
-    {
-        this.score += score;
-        SetScore(this.score);
     }
 
     public void PlayGame()
@@ -97,7 +67,6 @@ public class GameManager : MonoBehaviour
         Speed = 0;
         GameOver = true;
         gameOverScreen.SetActive(true);
-        PlayerPrefs.SetInt("HighScore", Mathf.Max(score, highScore));
     }
 
     public void Restart()
@@ -111,12 +80,4 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
-
-    public void Plus1000(Vector3 playerPos)
-    {
-        AddScore(1000);
-        plus1000Ani.SetTrigger("Bonus");
-        plus1000Ani.transform.position = new Vector3(playerPos.x, playerPos.y + 2, 0);
-    }
-
 }

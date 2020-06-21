@@ -8,9 +8,9 @@ public class Player : MonoBehaviour
 {
     public float Distance = 1.5f;
     [SerializeField] GameObject mobileInput;
-    [SerializeField] GameObject shield;
     float ySpawnPos;
-    bool dead = false, hasShield = false;
+    int check = 0;
+    bool dead = false;
 
     void Awake()
     {
@@ -92,38 +92,16 @@ public class Player : MonoBehaviour
 
     public bool CheckDeath()
     {
-        return dead;
+        if (check == 1)
+            return true;
+        else
+            return false;
     }
-
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Shield"))
-        {
-            AudioManager.Instance.PlaySound("shield");
-            if (!hasShield)
-            {
-                hasShield = true;
-                shield.SetActive(true);
-            }
-            else
-            {
-                GameManager.Instance.Plus1000(transform.position);
-            }
-            SpawnManager.Instance.ReturnToPool("shield", col.gameObject);
-        }
-        else
-        {
-            if (!hasShield)
-            {
-                dead = true;
-                AudioManager.Instance.PlaySound("ugh");
-                GameManager.Instance.StopGame();
-            }
-            else
-            {
-                hasShield = false;
-                shield.SetActive(false);
-            }
-        }
+        Debug.Log("Va cham");
+        check = 1;
+        dead = true;
+        GameManager.Instance.StopGame();
     }
 }
