@@ -15,7 +15,7 @@ public class PlayerAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.CheckDeath()== true)
+        if(player.CheckDeath())
         {
             playerAnimator.SetTrigger("Dead");
         }
