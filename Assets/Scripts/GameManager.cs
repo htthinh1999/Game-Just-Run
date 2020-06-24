@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,12 +13,14 @@ public class GameManager : MonoBehaviour
     public bool GameOver { get; private set; } = false;
     public float Speed = 10f;
 
+    string level = "Easy";
     bool paused = false;
     int highScore = 0, score = 0;
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI[] scoreTexts;
     [SerializeField] TextMeshProUGUI highScoreText;
+    [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] Animator plus1000Ani;
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] Button pauseButton;
@@ -32,7 +35,10 @@ public class GameManager : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name != "UIScene")
         {
-            highScore = PlayerPrefs.GetInt("HighScore");
+            level = PlayerPrefs.GetString("LEVEL", "EASY");
+            levelText.text = level;
+            Speed = PlayerPrefs.GetFloat("Speed", 6);
+            highScore = PlayerPrefs.GetInt(level + "HighScore", 0);
             highScoreText.text = highScore.ToString();
         }
     }
@@ -75,8 +81,11 @@ public class GameManager : MonoBehaviour
         SetScore(this.score);
     }
 
-    public void PlayGame()
+    public void PlayGame(float speed)
     {
+        string level = EventSystem.current.currentSelectedGameObject.name;
+        PlayerPrefs.SetString("LEVEL", level);
+        PlayerPrefs.SetFloat("Speed", speed);
         SceneManager.LoadScene(1);
     }
 
@@ -97,7 +106,7 @@ public class GameManager : MonoBehaviour
         Speed = 0;
         GameOver = true;
         gameOverScreen.SetActive(true);
-        PlayerPrefs.SetInt("HighScore", Mathf.Max(score, highScore));
+        PlayerPrefs.SetInt(level + "HighScore", Mathf.Max(score, highScore));
     }
 
     public void Restart()

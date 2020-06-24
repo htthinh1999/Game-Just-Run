@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        volume = PlayerPrefs.GetFloat("Volume", volume);
+        volume = PlayerPrefs.GetFloat("Volume", 1);
         if (SceneManager.GetActiveScene().name == "UIScene")
         {
             volumeSlider.value = volume;
