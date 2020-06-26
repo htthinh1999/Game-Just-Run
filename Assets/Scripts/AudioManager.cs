@@ -14,7 +14,7 @@ public class Sound
     public bool loop = false;
     [Range(0f, 1f)] public float volume = 1f;
     [Range(0f, 3f)] public float pitch = 1f;
-    public AudioSource source;
+    [HideInInspector] public AudioSource source;
     public void SetAudioSource(AudioSource src)
     {
         source = src;

@@ -5,19 +5,22 @@ using UnityEngine;
 public class PlayerAnim : MonoBehaviour
 {
     [SerializeField] Animator playerAnimator;
-    [SerializeField] Player player;   
-    // Start is called before the first frame update
+    [SerializeField] Player player;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(player.CheckDeath())
         {
             playerAnimator.SetTrigger("Dead");
+        }
+        else
+        {
+            playerAnimator.speed = GameManager.Instance.Speed / 10f;
         }
         
     }

@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
             }
             SpawnManager.Instance.ReturnToPool("shield", col.gameObject);
         }
-        else
+        else if (col.gameObject.CompareTag("Obstacle"))
         {
             if (!hasShield)
             {
@@ -121,6 +121,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                AudioManager.Instance.PlaySound("collision");
                 hasShield = false;
                 shield.SetActive(false);
             }
