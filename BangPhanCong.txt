@@ -1,0 +1,44 @@
+GAME Just Run (Windows, Android):
+
+- Description (Mô tả):
+	Game thuộc thể loại endless, player chạy khỏi động vật hung dữ và tránh vật cản
+- Core Feature (Chức năng chính):
+	+ Người chơi là một nhân vật người (human)
+	+ Kẻ thù là một đàn thú hung dữ trong rừng
+	+ Người chơi chạy từ trái sang phải
+	+ Đường chạy có 3 làn
+	+ Người chơi chuyển làn đường bằng cách nhấn phím lên xuống (PC), nhấn vào màn hình (Mobile)
+	+ Chướng ngại vật sinh ra ngẫu nhiên trên các làn đường
+	+ Kẻ thù chiếm cả 3 làn và cũng chạy từ trái sang phải
+	+ Người chơi thua cuộc khi nhân vật va chạm với chướng ngại vật, té ngã
+- Streght Goal (Chức năng phụ):
+	+ Người nhận được vật phẩm để hỗ trợ
+
+-----------------------------------------------------------------------------------------------------------
+
+PHÂN CÔNG CÔNG VIỆC
+
+- Code:
+	+ Code cho player (di chuyển lên xuống) (Bắc)
+	+ Code vật cản (di chuyển từ phải qua trái) (Bắc)
+	+ Code background, enviroment (di chuyển từ phải qua trái, di chuyển phân tầng (xa gần)) (Thịnh)
+	+ Code sinh vật cản ngẫu nhiên (Bắc: Normal(Instanciate, Destroy), Thịnh Advanced(Object Pooling))
+	+ Code cho UI (user interface) (giao diện tương tác với người dùng) (Start, Setting, Score, Restart,...) (Thịnh)
+	+ Thời gian càng lâu thì tốc độ càng tăng (Bắc)
+	+ Code cho phần audio (Đạt)
+	+ Code cho animation (Đức)
+- Art: (Tìm kiếm hình ảnh hoặc vẽ)
+	+ Background (Rừng, băng tuyết) (Thịnh)
+	+ Enviroment (Cây, Núi, Mây, Trời...) (Thịnh)
+	+ Player (Người chơi) (Thịnh)
+	+ Animals (Động vật: Sói, Hổ, Gấu, Tê giác,...) (Thịnh, Đạt)
+	+ Obstacles (Vật cản: gốc cây, đá, vũng nước, hố,...) (Đạt)
+- Audio: (Tìm kiếm âm thanh hoặc tự tạo) (Tìm mp3, wav)
+	+ SoundFX (Sound effect): Tiếng nhấn nút (Bubbles pop); tiếng gấu, hổ kêu,...; tiếng player; tiếng chạy; tiếng va chạm; tiếng game over (Đạt)
+	+ Background Music (Nhạc nền) (Đạt)
+- Animation:
+	+ Hoạt ảnh di chuyển player (Đức)
+	+ Hoạt ảnh di chuyển animal (Đức)
+- Particle:
+	+ Chạy văng đất (Đức)
+	+ Chạy hiện khói (Đức)
